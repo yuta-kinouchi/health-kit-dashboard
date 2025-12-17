@@ -14,17 +14,6 @@
 		EAF622582EF2DDA00046C03B /* health_kit_dashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF622572EF2DDA00046C03B /* health_kit_dashboardTests.swift */; };
 		EAF622622EF2DDA00046C03B /* health_kit_dashboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF622612EF2DDA00046C03B /* health_kit_dashboardUITests.swift */; };
 		EAF622642EF2DDA00046C03B /* health_kit_dashboardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF622632EF2DDA00046C03B /* health_kit_dashboardUITestsLaunchTests.swift */; };
-		EAF68B2C2EF2E42F00410DC8 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B2A2EF2E42F00410DC8 /* HealthKitManager.swift */; };
-		EAF68B312EF2E43900410DC8 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B2E2EF2E43900410DC8 /* ChartData.swift */; };
-		EAF68B322EF2E43900410DC8 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B2F2EF2E43900410DC8 /* HealthData.swift */; };
-		EAF68B332EF2E43900410DC8 /* ActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B2D2EF2E43900410DC8 /* ActivityData.swift */; };
-		EAF68B372EF2E44300410DC8 /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B342EF2E44300410DC8 /* CardStyle.swift */; };
-		EAF68B382EF2E44300410DC8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B352EF2E44300410DC8 /* Colors.swift */; };
-		EAF68B402EF2E44B00410DC8 /* WeeklyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B3C2EF2E44B00410DC8 /* WeeklyChartView.swift */; };
-		EAF68B412EF2E44B00410DC8 /* StepCountCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B3A2EF2E44B00410DC8 /* StepCountCard.swift */; };
-		EAF68B422EF2E44B00410DC8 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B392EF2E44B00410DC8 /* ActivityCard.swift */; };
-		EAF68B432EF2E44B00410DC8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B3E2EF2E44B00410DC8 /* DashboardView.swift */; };
-		EAF68B442EF2E44B00410DC8 /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF68B3B2EF2E44B00410DC8 /* SummaryCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,17 +45,6 @@
 		EAF6225D2EF2DDA00046C03B /* health-kit-dashboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "health-kit-dashboardUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF622612EF2DDA00046C03B /* health_kit_dashboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = health_kit_dashboardUITests.swift; sourceTree = "<group>"; };
 		EAF622632EF2DDA00046C03B /* health_kit_dashboardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = health_kit_dashboardUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		EAF68B2A2EF2E42F00410DC8 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
-		EAF68B2D2EF2E43900410DC8 /* ActivityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityData.swift; sourceTree = "<group>"; };
-		EAF68B2E2EF2E43900410DC8 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
-		EAF68B2F2EF2E43900410DC8 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
-		EAF68B342EF2E44300410DC8 /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
-		EAF68B352EF2E44300410DC8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		EAF68B392EF2E44B00410DC8 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
-		EAF68B3A2EF2E44B00410DC8 /* StepCountCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCountCard.swift; sourceTree = "<group>"; };
-		EAF68B3B2EF2E44B00410DC8 /* SummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
-		EAF68B3C2EF2E44B00410DC8 /* WeeklyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChartView.swift; sourceTree = "<group>"; };
-		EAF68B3E2EF2E44B00410DC8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +95,6 @@
 		EAF622442EF2DD9F0046C03B /* health-kit-dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				EAF68B3F2EF2E44B00410DC8 /* Views */,
-				EAF68B362EF2E44300410DC8 /* Styles */,
-				EAF68B302EF2E43900410DC8 /* Models */,
-				EAF68B2B2EF2E42F00410DC8 /* Managers */,
 				EAF622452EF2DD9F0046C03B /* health_kit_dashboardApp.swift */,
 				EAF622472EF2DD9F0046C03B /* ContentView.swift */,
 				EAF622492EF2DDA00046C03B /* Assets.xcassets */,
@@ -153,53 +127,6 @@
 				EAF622632EF2DDA00046C03B /* health_kit_dashboardUITestsLaunchTests.swift */,
 			);
 			path = "health-kit-dashboardUITests";
-			sourceTree = "<group>";
-		};
-		EAF68B2B2EF2E42F00410DC8 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				EAF68B2A2EF2E42F00410DC8 /* HealthKitManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		EAF68B302EF2E43900410DC8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EAF68B2D2EF2E43900410DC8 /* ActivityData.swift */,
-				EAF68B2E2EF2E43900410DC8 /* ChartData.swift */,
-				EAF68B2F2EF2E43900410DC8 /* HealthData.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		EAF68B362EF2E44300410DC8 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				EAF68B342EF2E44300410DC8 /* CardStyle.swift */,
-				EAF68B352EF2E44300410DC8 /* Colors.swift */,
-			);
-			path = Styles;
-			sourceTree = "<group>";
-		};
-		EAF68B3D2EF2E44B00410DC8 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				EAF68B392EF2E44B00410DC8 /* ActivityCard.swift */,
-				EAF68B3A2EF2E44B00410DC8 /* StepCountCard.swift */,
-				EAF68B3B2EF2E44B00410DC8 /* SummaryCard.swift */,
-				EAF68B3C2EF2E44B00410DC8 /* WeeklyChartView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		EAF68B3F2EF2E44B00410DC8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				EAF68B3D2EF2E44B00410DC8 /* Components */,
-				EAF68B3E2EF2E44B00410DC8 /* DashboardView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,18 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF622482EF2DD9F0046C03B /* ContentView.swift in Sources */,
-				EAF68B312EF2E43900410DC8 /* ChartData.swift in Sources */,
-				EAF68B322EF2E43900410DC8 /* HealthData.swift in Sources */,
-				EAF68B332EF2E43900410DC8 /* ActivityData.swift in Sources */,
-				EAF68B372EF2E44300410DC8 /* CardStyle.swift in Sources */,
-				EAF68B382EF2E44300410DC8 /* Colors.swift in Sources */,
 				EAF622462EF2DD9F0046C03B /* health_kit_dashboardApp.swift in Sources */,
-				EAF68B2C2EF2E42F00410DC8 /* HealthKitManager.swift in Sources */,
-				EAF68B402EF2E44B00410DC8 /* WeeklyChartView.swift in Sources */,
-				EAF68B412EF2E44B00410DC8 /* StepCountCard.swift in Sources */,
-				EAF68B422EF2E44B00410DC8 /* ActivityCard.swift in Sources */,
-				EAF68B432EF2E44B00410DC8 /* DashboardView.swift in Sources */,
-				EAF68B442EF2E44B00410DC8 /* SummaryCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,9 +424,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "歩数や健康データを読み取り、ダッシュボードに表示するために使用します。";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "健康データを記録するために使用します。";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -549,9 +462,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "歩数や健康データを読み取り、ダッシュボードに表示するために使用します。";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "健康データを記録するために使用します。";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(plutil:*)",
+      "Bash(xcodebuild -list:*)",
+      "Bash(/usr/libexec/PlistBuddy:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(python3:*)",
+      "Bash(open:*)",
+      "Bash(gem install:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
