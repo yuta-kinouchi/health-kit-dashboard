@@ -4,15 +4,28 @@ struct DashboardView: View {
     @StateObject private var healthManager = HealthKitManager.shared
     @State private var showingAuthAlert = false
     @State private var weeklyStepsData: [DailyStepData] = []
+    @State private var healthAssessment: HealthAssessment?
+    @State private var walkingSpeedTrend: WalkingSpeedTrend?
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
                     if healthManager.isAuthorized {
+                        // 健康状態評価カード
+                        if let assessment = healthAssessment {
+                            HealthAssessmentCard(assessment: assessment)
+                        }
+
+                        // 歩行速度カード
+                        walkingSpeedSection
+
                         todaySummarySection
 
                         activityCardsSection
+
+                        // 歩行速度推移グラフ
+                        walkingSpeedChartSection
 
                         weeklyChartSection
                     } else {
@@ -127,6 +140,43 @@ struct DashboardView: View {
         }
     }
 
+    private var walkingSpeedSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("歩行速度")
+                .font(.title2)
+                .fontWeight(.bold)
+
+            if healthManager.todayWalkingSpeed > 0 {
+                let assessment = WalkingSpeedAssessment.assess(
+                    speed: healthManager.todayWalkingSpeed,
+                    age: 65
+                )
+                WalkingSpeedCard(speed: healthManager.todayWalkingSpeed, assessment: assessment)
+            } else {
+                Text("データがありません")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding()
+                    .cardStyle()
+            }
+        }
+    }
+
+    private var walkingSpeedChartSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("歩行速度の推移")
+                .font(.title2)
+                .fontWeight(.bold)
+
+            if !healthManager.weeklyWalkingSpeed.isEmpty {
+                WalkingSpeedChartView(
+                    data: healthManager.weeklyWalkingSpeed,
+                    trend: walkingSpeedTrend
+                )
+            }
+        }
+    }
+
     private var weeklyChartSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("週間統計")
@@ -194,6 +244,25 @@ struct DashboardView: View {
         do {
             try await healthManager.fetchAllTodayData()
             weeklyStepsData = try await healthManager.fetchWeeklySteps()
+
+            // 歩行速度データの取得
+            let walkingSpeedData = try await healthManager.fetchWeeklyWalkingSpeed()
+            await MainActor.run {
+                healthManager.weeklyWalkingSpeed = walkingSpeedData
+            }
+
+            // トレンド分析
+            if walkingSpeedData.count >= 14 {
+                walkingSpeedTrend = WalkingSpeedTrend.analyze(currentData: walkingSpeedData)
+            }
+
+            // 健康状態評価
+            let averageSpeed = walkingSpeedData.isEmpty ? 0 : walkingSpeedData.reduce(0.0) { $0 + $1.speed } / Double(walkingSpeedData.count)
+            healthAssessment = HealthAssessment.assess(
+                averageWalkingSpeed: averageSpeed,
+                dailySteps: healthManager.todaySteps,
+                age: 65
+            )
         } catch {
             print("Failed to fetch data: \(error)")
         }

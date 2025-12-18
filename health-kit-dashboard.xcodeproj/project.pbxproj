@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32322925EE774CE5AC26B494 /* HealthAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21720A93AC8A4BB18D782983 /* HealthAssessment.swift */; };
+		6EB12E7761604601B6B2F5BA /* WalkingSpeedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D17D57562B4A339ACB17D8 /* WalkingSpeedCard.swift */; };
+		481A3D154C5C4D019C635749 /* WalkingSpeedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5AA527F3D476A975DC0FD /* WalkingSpeedChartView.swift */; };
+		7D4CDD724D8C42879300517D /* HealthAssessmentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DC7916030942C09161467B /* HealthAssessmentCard.swift */; };
 		EAF622462EF2DD9F0046C03B /* health_kit_dashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF622452EF2DD9F0046C03B /* health_kit_dashboardApp.swift */; };
 		EAF622482EF2DD9F0046C03B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF622472EF2DD9F0046C03B /* ContentView.swift */; };
 		EAF6224A2EF2DDA00046C03B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF622492EF2DDA00046C03B /* Assets.xcassets */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21720A93AC8A4BB18D782983 /* HealthAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAssessment.swift; sourceTree = "<group>"; };
+		90D17D57562B4A339ACB17D8 /* WalkingSpeedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingSpeedCard.swift; sourceTree = "<group>"; };
+		8EF5AA527F3D476A975DC0FD /* WalkingSpeedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingSpeedChartView.swift; sourceTree = "<group>"; };
+		66DC7916030942C09161467B /* HealthAssessmentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAssessmentCard.swift; sourceTree = "<group>"; };
 		EAF622422EF2DD9F0046C03B /* health-kit-dashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "health-kit-dashboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF622452EF2DD9F0046C03B /* health_kit_dashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = health_kit_dashboardApp.swift; sourceTree = "<group>"; };
 		EAF622472EF2DD9F0046C03B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -169,7 +177,7 @@
 				EAF68B2D2EF2E43900410DC8 /* ActivityData.swift */,
 				EAF68B2E2EF2E43900410DC8 /* ChartData.swift */,
 				EAF68B2F2EF2E43900410DC8 /* HealthData.swift */,
-			);
+				21720A93AC8A4BB18D782983 /* HealthAssessment.swift */,);
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -189,7 +197,10 @@
 				EAF68B3A2EF2E44B00410DC8 /* StepCountCard.swift */,
 				EAF68B3B2EF2E44B00410DC8 /* SummaryCard.swift */,
 				EAF68B3C2EF2E44B00410DC8 /* WeeklyChartView.swift */,
-			);
+			
+				90D17D57562B4A339ACB17D8 /* WalkingSpeedCard.swift */,
+				8EF5AA527F3D476A975DC0FD /* WalkingSpeedChartView.swift */,
+				66DC7916030942C09161467B /* HealthAssessmentCard.swift */,);
 			path = Components;
 			sourceTree = "<group>";
 		};
@@ -345,7 +356,11 @@
 				EAF68B422EF2E44B00410DC8 /* ActivityCard.swift in Sources */,
 				EAF68B432EF2E44B00410DC8 /* DashboardView.swift in Sources */,
 				EAF68B442EF2E44B00410DC8 /* SummaryCard.swift in Sources */,
-			);
+			
+				32322925EE774CE5AC26B494 /* HealthAssessment.swift in Sources */,
+				6EB12E7761604601B6B2F5BA /* WalkingSpeedCard.swift in Sources */,
+				481A3D154C5C4D019C635749 /* WalkingSpeedChartView.swift in Sources */,
+				7D4CDD724D8C42879300517D /* HealthAssessmentCard.swift in Sources */,);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EAF6224F2EF2DDA00046C03B /* Sources */ = {
