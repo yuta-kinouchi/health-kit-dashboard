@@ -12,6 +12,8 @@ class HealthKitManager: ObservableObject {
     @Published var todayDistance: Double = 0.0
     @Published var todayActiveEnergy: Double = 0.0
     @Published var todayFlightsClimbed: Int = 0
+    @Published var todayWalkingSpeed: Double = 0.0
+    @Published var weeklyWalkingSpeed: [DailyWalkingSpeedData] = []
 
     private init() {}
 
@@ -35,7 +37,11 @@ class HealthKitManager: ObservableObject {
             HKObjectType.quantityType(forIdentifier: .flightsClimbed)!,
             HKObjectType.quantityType(forIdentifier: .heartRate)!,
             HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!,
-            HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!
+            HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!,
+            HKObjectType.quantityType(forIdentifier: .walkingSpeed)!,
+            HKObjectType.quantityType(forIdentifier: .walkingStepLength)!,
+            HKObjectType.quantityType(forIdentifier: .walkingAsymmetryPercentage)!,
+            HKObjectType.quantityType(forIdentifier: .walkingDoubleSupportPercentage)!
         ]
 
         try await healthStore.requestAuthorization(toShare: [], read: typesToRead)
@@ -95,11 +101,24 @@ class HealthKitManager: ObservableObject {
         }
     }
 
+    func fetchTodayWalkingSpeed() async throws {
+        guard let speedType = HKQuantityType.quantityType(forIdentifier: .walkingSpeed) else {
+            throw HealthKitError.dataTypeNotAvailable
+        }
+
+        let speed = try await fetchTodayAverage(for: speedType, unit: HKUnit.meter().unitDivided(by: .second()))
+
+        await MainActor.run {
+            self.todayWalkingSpeed = speed
+        }
+    }
+
     func fetchAllTodayData() async throws {
         try await fetchTodaySteps()
         try await fetchTodayDistance()
         try await fetchTodayActiveEnergy()
         try await fetchTodayFlightsClimbed()
+        try await fetchTodayWalkingSpeed()
     }
 
     // MARK: - Private Helper Methods
@@ -134,6 +153,36 @@ class HealthKitManager: ObservableObject {
         }
     }
 
+    private func fetchTodayAverage(for quantityType: HKQuantityType, unit: HKUnit) async throws -> Double {
+        let calendar = Calendar.current
+        let now = Date()
+        let startOfDay = calendar.startOfDay(for: now)
+
+        let predicate = HKQuery.predicateForSamples(
+            withStart: startOfDay,
+            end: now,
+            options: .strictStartDate
+        )
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKStatisticsQuery(
+                quantityType: quantityType,
+                quantitySamplePredicate: predicate,
+                options: .discreteAverage
+            ) { _, result, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                let average = result?.averageQuantity()?.doubleValue(for: unit) ?? 0.0
+                continuation.resume(returning: average)
+            }
+
+            healthStore.execute(query)
+        }
+    }
+
     // MARK: - Fetch Weekly Data
 
     func fetchWeeklySteps() async throws -> [DailyStepData] {
@@ -142,6 +191,56 @@ class HealthKitManager: ObservableObject {
         }
 
         return try await fetchWeeklyData(for: stepType, unit: .count())
+    }
+
+    func fetchWeeklyWalkingSpeed() async throws -> [DailyWalkingSpeedData] {
+        guard let speedType = HKQuantityType.quantityType(forIdentifier: .walkingSpeed) else {
+            throw HealthKitError.dataTypeNotAvailable
+        }
+
+        let calendar = Calendar.current
+        let now = Date()
+        let startDate = calendar.date(byAdding: .day, value: -30, to: now)!
+
+        let predicate = HKQuery.predicateForSamples(
+            withStart: startDate,
+            end: now,
+            options: .strictStartDate
+        )
+
+        var interval = DateComponents()
+        interval.day = 1
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKStatisticsCollectionQuery(
+                quantityType: speedType,
+                quantitySamplePredicate: predicate,
+                options: .discreteAverage,
+                anchorDate: startDate,
+                intervalComponents: interval
+            )
+
+            query.initialResultsHandler = { _, results, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                var dailyData: [DailyWalkingSpeedData] = []
+
+                results?.enumerateStatistics(from: startDate, to: now) { statistics, _ in
+                    let value = statistics.averageQuantity()?.doubleValue(for: HKUnit.meter().unitDivided(by: .second())) ?? 0.0
+                    if value > 0 {
+                        let data = DailyWalkingSpeedData(date: statistics.startDate, speed: value)
+                        dailyData.append(data)
+                    }
+                }
+
+                continuation.resume(returning: dailyData)
+            }
+
+            healthStore.execute(query)
+        }
     }
 
     private func fetchWeeklyData(for quantityType: HKQuantityType, unit: HKUnit) async throws -> [DailyStepData] {
@@ -223,5 +322,25 @@ struct DailyStepData: Identifiable {
 
     var intValue: Int {
         return Int(value)
+    }
+}
+
+struct DailyWalkingSpeedData: Identifiable {
+    let id = UUID()
+    let date: Date
+    let speed: Double
+
+    var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/d"
+        return formatter.string(from: date)
+    }
+
+    var speedInKmPerHour: Double {
+        return speed * 3.6
+    }
+
+    var formattedSpeed: String {
+        return String(format: "%.2f", speedInKmPerHour)
     }
 }
